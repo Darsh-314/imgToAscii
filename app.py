@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, render_template
 from flask_cors import CORS
 from PIL import Image, ImageEnhance, ImageFilter
 import numpy as np
@@ -7,6 +7,10 @@ from scipy import ndimage
 
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 # OPTIMIZED character sets - these actually look GOOD! 🎨
 # Sorted from darkest to lightest based on visual density
